@@ -3,7 +3,7 @@ baseURL = "https://rohanchaudhari.fr"
 languageCode = "en-US"
 title = "Rohan Chaudhari - Software Engineer"
 theme = "hugo-split-theme"
-disableKinds = ["section", "taxonomy", "taxonomyTerm", "RSS", "sitemap"]
+disableKinds = ["taxonomy", "taxonomyTerm", "RSS", "sitemap"]
 
 # Local preview mode
 relativeURLs = true
@@ -22,6 +22,11 @@ copyright = "&copy;2025 Rohan Chaudhari"
   description = "Split is a centrally-divided layout for a professional online presence with a big image or video left with alongside content."
   shareImage = "images/social.jpg"
   twitterHandle = "rohan1chaudhari"
+
+  # Custom CSS
+  [params.custom]
+    [params.custom.css]
+      enable = true
 
   # Favicon
   favicon = "favicon.ico"
@@ -51,8 +56,8 @@ copyright = "&copy;2025 Rohan Chaudhari"
 
       [[params.links.list1.link]]
         text = "Blog"
-        url = "#"
-        new_tab = true # new tab
+        url = "/blog.html"
+        new_tab = false
 
       [[params.links.list1.link]]
         text = "Email"

@@ -1,0 +1,14 @@
+{{ define "main" }}
+<div class="split-bio">
+  <div class="blog-post">
+    <h1>{{ .Title }}</h1>
+    <p class="blog-date">{{ .Date.Format "January 2, 2006" }}</p>
+    <div class="blog-content">
+      {{ .Content }}
+    </div>
+    <div class="blog-nav">
+      <a href="/" class="blog-back">← Back to home</a>
+    </div>
+  </div>
+</div>
+{{ end }}

@@ -1,0 +1,14 @@
+{{ define "main" }}
+<div class="split-bio">
+  <h1>Blog</h1>
+  <div class="blog-list">
+    {{ range .Pages }}
+    <article class="blog-summary">
+      <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+      <p class="blog-date">{{ .Date.Format "January 2, 2006" }}</p>
+      <p>{{ .Summary }}</p>
+    </article>
+    {{ end }}
+  </div>
+</div>
+{{ end }}
