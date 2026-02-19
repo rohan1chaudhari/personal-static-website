@@ -1,5 +1,5 @@
 # Site settings
-baseURL = "https://example.com"
+baseURL = "https://rohanchaudhari.fr"
 languageCode = "en-US"
 title = "Rohan Chaudhari - Software Engineer"
 theme = "hugo-split-theme"
@@ -13,7 +13,7 @@ uglyURLs = true
 googleAnalytics = ""
 
 # Copyright
-copyright = "&copy;2021 Your Name"
+copyright = "&copy;2025 Rohan Chaudhari"
 
 [params]
 
