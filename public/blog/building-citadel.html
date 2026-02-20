@@ -78,6 +78,14 @@
     <p class="blog-date">February 20, 2026</p>
     <div class="blog-content">
       <hr>
+<h2 id="the-origin-story">The Origin Story</h2>
+<p>This didn&rsquo;t start as a grand project. It started because I was testing OpenClaw when it became popular—just using Telegram to develop a personal project hosted on an old spare laptop at home. The laptop was so slow and boring that I didn&rsquo;t want to touch it once OpenClaw was set up. Originally, I had to test my Next.js app on the local browser on that shitty laptop. It was super painful.</p>
+<p>That&rsquo;s when I discovered ngrok and Tailscale after reading a post by <a href="https://twitter.com/levelsio">@levelsio</a>. Suddenly I could write prompts from Telegram on my phone and test immediately in my browser on a real machine. The feedback loop became addictive.</p>
+<p>With that speed, I didn&rsquo;t want to work on just one app anymore. I asked Claude Code to make a master Next.js app that could host multiple sub-apps with different databases, storage, and isolation. Citadel was born.</p>
+<p>But then I got annoyed by switching contexts in Telegram. I came across Bhanu Teja&rsquo;s <a href="https://bhanuteja.dev/mission-control">Mission Control</a> article—it was exactly the nascent idea in my head, but now battle-tested and written down. That pushed me further.</p>
+<p>Now I hated opening my project in a browser at all. So I asked Claude Code to build me an iOS app that acts as a browser but is confined only to my URL. It strips away all the browser functionality I don&rsquo;t need. Just my superapp, fullscreen, like a native experience.</p>
+<p>That&rsquo;s where I am now: an iOS app connecting to my local superapp that only I can access. My personal data stays safe (not that it&rsquo;s a challenge for anyone to hack), and I&rsquo;ve rebuilt apps I was paying for. They&rsquo;re simple CRUD apps with LLM integrations for now, but the foundation is there for much more.</p>
+<hr>
 <h2 id="day-1-the-foundation-feb-16-1624">Day 1: The Foundation (Feb 16, 16:24)</h2>
 <p>It started with a simple idea: I wanted a single place to run small personal apps without spinning up a new VPS for every little tool. At 4:24 PM, I initialized the monorepo skeleton. By 4:28, I&rsquo;d already made the key architectural decision that would define everything after: <strong>each app gets its own SQLite database</strong>, completely isolated from the others. No shared schemas, no cross-app queries. If I delete an app, I delete one file. Simple.</p>
 <p>The host came together quickly—a Next.js app that would serve as both the control plane and the runtime. I sketched out the first two apps that same afternoon: <strong>Smart Notes</strong> for capturing thoughts, and <strong>Gym Tracker</strong> for logging workouts. Both followed the same pattern: a minimal UI, a simple API, and their own <code>db.sqlite</code> file tucked away in <code>data/apps/&lt;appId&gt;/</code>.</p>
@@ -143,6 +151,15 @@
 <hr>
 <h2 id="whats-next">What&rsquo;s Next</h2>
 <p>The autopilot is still learning. I&rsquo;m refining the prompt engineering, adding more guardrails, and building out the review flow. The next apps are already specced: a finance tracker, a reading list, maybe a personal CRM.</p>
+<p>But there&rsquo;s more coming:</p>
+<ul>
+<li>
+<p><strong>Dockerize each app</strong> — Right now everything runs in the same Next.js process. I want true isolation: each app in its own container, still managed by the Citadel host.</p>
+</li>
+<li>
+<p><strong>Cron the agents to pick tasks from the scrum board</strong> — The autopilot is mostly manual right now. I want agents running on a schedule, pulling tasks, implementing them, and reporting back. Currently blocked by credit limits and API expenses, but that&rsquo;s temporary.</p>
+</li>
+</ul>
 <p>Citadel started as a way to avoid spinning up new VPS instances. It became something more interesting: a platform where I can <em>think</em> in apps, build them quickly, and let an agent handle the grunt work.</p>
 <p>That&rsquo;s the story so far. The commits tell the rest.</p>
 <hr>

@@ -7,6 +7,22 @@ summary = "How I went from an empty repo to a self-hosted platform running multi
 
 ---
 
+## The Origin Story
+
+This didn't start as a grand project. It started because I was testing OpenClaw when it became popular—just using Telegram to develop a personal project hosted on an old spare laptop at home. The laptop was so slow and boring that I didn't want to touch it once OpenClaw was set up. Originally, I had to test my Next.js app on the local browser on that shitty laptop. It was super painful.
+
+That's when I discovered ngrok and Tailscale after reading a post by [@levelsio](https://twitter.com/levelsio). Suddenly I could write prompts from Telegram on my phone and test immediately in my browser on a real machine. The feedback loop became addictive.
+
+With that speed, I didn't want to work on just one app anymore. I asked Claude Code to make a master Next.js app that could host multiple sub-apps with different databases, storage, and isolation. Citadel was born.
+
+But then I got annoyed by switching contexts in Telegram. I came across Bhanu Teja's [Mission Control](https://bhanuteja.dev/mission-control) article—it was exactly the nascent idea in my head, but now battle-tested and written down. That pushed me further.
+
+Now I hated opening my project in a browser at all. So I asked Claude Code to build me an iOS app that acts as a browser but is confined only to my URL. It strips away all the browser functionality I don't need. Just my superapp, fullscreen, like a native experience.
+
+That's where I am now: an iOS app connecting to my local superapp that only I can access. My personal data stays safe (not that it's a challenge for anyone to hack), and I've rebuilt apps I was paying for. They're simple CRUD apps with LLM integrations for now, but the foundation is there for much more.
+
+---
+
 ## Day 1: The Foundation (Feb 16, 16:24)
 
 It started with a simple idea: I wanted a single place to run small personal apps without spinning up a new VPS for every little tool. At 4:24 PM, I initialized the monorepo skeleton. By 4:28, I'd already made the key architectural decision that would define everything after: **each app gets its own SQLite database**, completely isolated from the others. No shared schemas, no cross-app queries. If I delete an app, I delete one file. Simple.
@@ -113,6 +129,12 @@ The autopilot needed clearer acceptance criteria from the start. It's good that 
 ## What's Next
 
 The autopilot is still learning. I'm refining the prompt engineering, adding more guardrails, and building out the review flow. The next apps are already specced: a finance tracker, a reading list, maybe a personal CRM.
+
+But there's more coming:
+
+- **Dockerize each app** — Right now everything runs in the same Next.js process. I want true isolation: each app in its own container, still managed by the Citadel host.
+
+- **Cron the agents to pick tasks from the scrum board** — The autopilot is mostly manual right now. I want agents running on a schedule, pulling tasks, implementing them, and reporting back. Currently blocked by credit limits and API expenses, but that's temporary.
 
 Citadel started as a way to avoid spinning up new VPS instances. It became something more interesting: a platform where I can *think* in apps, build them quickly, and let an agent handle the grunt work.
 
