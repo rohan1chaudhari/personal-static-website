@@ -1,3 +1,25 @@
+/* Full width layout for non-home pages */
+.fs-split.full-content {
+  display: block;
+}
+
+.fs-split.full-content .split-content.full-width {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.fs-split.full-content .split-content.full-width .split-content-vertically-center {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 60px 40px;
+}
+
+@media (max-width: 800px) {
+  .fs-split.full-content .split-content.full-width .split-content-vertically-center {
+    padding: 40px 20px;
+  }
+}
+
 /* Blog Styles */
 
 .blog-post {
