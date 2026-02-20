@@ -108,6 +108,18 @@ The architecture held up. Per-app databases mean I can nuke Gym Tracker without 
 
 ---
 
+## The Vision
+
+Here's what I'm actually building toward: **a world where you have the apps you want, the way you want them.**
+
+No more 20 subscriptions for simple tools that should be free. No more accepting whatever UI some product manager decided was best for "engagement." When you control the app, you control the experience.
+
+And here's the part that excites me most: **interconnection**. When all your apps live in the same place—same data layer, same auth, same runtime—they can talk to each other in ways that SaaS never allows. Your gym tracker can suggest notes about form. Your finance app can reference reading highlights. Everything becomes composable.
+
+Citadel isn't just a personal app host. It's an argument that software should serve users, not shareholders.
+
+---
+
 ## What I'd Do Differently
 
 The paper notebook detour taught me to test UI changes faster. I should've prototyped in the browser before committing seven reverts.
