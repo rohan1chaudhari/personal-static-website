@@ -6,14 +6,14 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
 
-<title>Building Citadel: A Local-First Personal App Hub in 4 Days - Rohan Chaudhari - Software Engineer</title>
+<title>Building Citadel: From a Shitty Laptop to a Personal App Hub - Rohan Chaudhari - Software Engineer</title>
 <meta name="author" content="Rohan Chaudhari" />
 <meta name="description" content="Split is a centrally-divided layout for a professional online presence with a big image or video left with alongside content." />
 <meta name="robots" content="index, follow" />
 <meta name="referrer" content="always" />
 
 
-<meta property="og:title" content="Building Citadel: A Local-First Personal App Hub in 4 Days - Rohan Chaudhari - Software Engineer" />
+<meta property="og:title" content="Building Citadel: From a Shitty Laptop to a Personal App Hub - Rohan Chaudhari - Software Engineer" />
 <meta property="og:description" content="Split is a centrally-divided layout for a professional online presence with a big image or video left with alongside content." />
 <meta property="og:url" content="https://rohanchaudhari.fr" />
 
@@ -65,7 +65,7 @@
       <div class="split-content-vertically-center">
         
         <div class="split-intro">
-  <h1>Building Citadel: A Local-First Personal App Hub in 4 Days</h1>
+  <h1>Building Citadel: From a Shitty Laptop to a Personal App Hub</h1>
   
 </div>
 
@@ -74,99 +74,75 @@
         
 <div class="split-bio">
   <div class="blog-post">
-    <h1>Building Citadel: A Local-First Personal App Hub in 4 Days</h1>
+    <h1>Building Citadel: From a Shitty Laptop to a Personal App Hub</h1>
     <p class="blog-date">February 20, 2026</p>
     <div class="blog-content">
       <hr>
-<h2 id="the-origin-story">The Origin Story</h2>
-<p>This didn&rsquo;t start as a grand project. It started because I was testing OpenClaw when it became popular—just using Telegram to develop a personal project hosted on an old spare laptop at home. The laptop was so slow and boring that I didn&rsquo;t want to touch it once OpenClaw was set up. Originally, I had to test my Next.js app on the local browser on that shitty laptop. It was super painful.</p>
-<p>That&rsquo;s when I discovered ngrok and Tailscale after reading a post by <a href="https://twitter.com/levelsio">@levelsio</a>. Suddenly I could write prompts from Telegram on my phone and test immediately in my browser on a real machine. The feedback loop became addictive.</p>
-<p>With that speed, I didn&rsquo;t want to work on just one app anymore. I asked Claude Code to make a master Next.js app that could host multiple sub-apps with different databases, storage, and isolation. Citadel was born.</p>
-<p>But then I got annoyed by switching contexts in Telegram. I came across Bhanu Teja&rsquo;s <a href="https://bhanuteja.dev/mission-control">Mission Control</a> article—it was exactly the nascent idea in my head, but now battle-tested and written down. That pushed me further.</p>
-<p>Now I hated opening my project in a browser at all. So I asked Claude Code to build me an iOS app that acts as a browser but is confined only to my URL. It strips away all the browser functionality I don&rsquo;t need. Just my superapp, fullscreen, like a native experience.</p>
-<p>That&rsquo;s where I am now: an iOS app connecting to my local superapp that only I can access. My personal data stays safe (not that it&rsquo;s a challenge for anyone to hack), and I&rsquo;ve rebuilt apps I was paying for. They&rsquo;re simple CRUD apps with LLM integrations for now, but the foundation is there for much more.</p>
+<p>It started with an old laptop. A spare machine I had lying around, too slow to use for anything serious but too functional to throw away. I wanted to test OpenClaw—this new thing people were talking about—so I installed it there and hooked up Telegram. The idea was simple: use AI to develop a personal project without touching the machine itself.</p>
+<p>The problem became obvious immediately. Every time I wanted to test my Next.js app, I had to open a browser on that shitty laptop. The lag. The fan noise. The pain of typing on a keyboard I didn&rsquo;t like. I avoided it like the plague.</p>
+<p>Then I read a post by <a href="https://twitter.com/levelsio">@levelsio</a>. He mentioned ngrok and Tailscale—tools for exposing local servers to the internet. I set them up that evening. Suddenly I could write prompts from Telegram on my phone and see the results instantly in a browser on my actual computer. The feedback loop became addictive. Write prompt. Wait 30 seconds. Refresh. See changes. Repeat.</p>
+<p>But with that speed came a new problem: I didn&rsquo;t want to work on just one app anymore. I had ideas for a notes app, a gym tracker, maybe a finance tool. Each one felt like it needed its own repo, its own deployment, its own database. The friction of starting stopped me from starting.</p>
+<p>So I asked Claude Code to build something different: a master Next.js app that could host multiple sub-apps, each with its own database, storage, and isolation. Citadel was born.</p>
 <hr>
-<h2 id="day-1-the-foundation-feb-16-1624">Day 1: The Foundation (Feb 16, 16:24)</h2>
-<p>It started with a simple idea: I wanted a single place to run small personal apps without spinning up a new VPS for every little tool. At 4:24 PM, I initialized the monorepo skeleton. By 4:28, I&rsquo;d already made the key architectural decision that would define everything after: <strong>each app gets its own SQLite database</strong>, completely isolated from the others. No shared schemas, no cross-app queries. If I delete an app, I delete one file. Simple.</p>
-<p>The host came together quickly—a Next.js app that would serve as both the control plane and the runtime. I sketched out the first two apps that same afternoon: <strong>Smart Notes</strong> for capturing thoughts, and <strong>Gym Tracker</strong> for logging workouts. Both followed the same pattern: a minimal UI, a simple API, and their own <code>db.sqlite</code> file tucked away in <code>data/apps/&lt;appId&gt;/</code>.</p>
-<p>By 5 PM, I had working prototypes. By 6 PM, they looked decent—Tailwind CSS tied it all together. But &ldquo;decent&rdquo; wasn&rsquo;t enough. I kept going.</p>
+<h2 id="the-foundation-feb-16-1624">The Foundation (Feb 16, 16:24)</h2>
+<p>At 4:24 PM on February 16th, I initialized the monorepo skeleton. By 4:28 PM, I&rsquo;d made the decision that would define everything: <strong>each app gets its own SQLite database.</strong> No shared schemas. No cross-app queries. Delete an app, delete one file. Simple.</p>
+<p>The architecture came together fast—a Next.js host serving as both control plane and runtime. By 5 PM I had working prototypes for Smart Notes and Gym Tracker. By 6 PM they looked decent with Tailwind CSS. But decent wasn&rsquo;t enough. I kept going.</p>
 <hr>
-<h2 id="day-1-evening-smart-notes-gets-real">Day 1 Evening: Smart Notes Gets Real</h2>
-<p>The first version of Smart Notes was just a list and a form. Useful, but boring. I wanted something I&rsquo;d actually enjoy using.</p>
-<p>At 5:24 PM, I added a proper note detail page. Then soft deletes (5:33 PM)—because accidents happen. Then a trash view with restore and purge (5:36 PM). Search highlighting (5:36 PM). Pinning (6:26 PM). Each commit was small, but the cumulative effect was a notes app that felt <em>alive</em>.</p>
-<p>The big leap came at 5:51 PM: <strong>voice notes</strong>. I added a record button that captures audio on mobile, pipes it through ElevenLabs Scribe for transcription, and structures it into markdown. By 6:04 PM, I&rsquo;d tuned it to use the best models and keep the output faithful—no over-enthusiastic &ldquo;meeting notes&rdquo; rewrites, just clean structured text.</p>
-<p>Autosave landed at 6:23 PM, followed by undo-delete snackbars. By the end of the evening, Smart Notes wasn&rsquo;t a toy anymore. It was the notes app I&rsquo;d been looking for.</p>
+<h2 id="smart-notes-gets-real">Smart Notes Gets Real</h2>
+<p>The first version was just a list and a form. Useful, but boring. I wanted something I&rsquo;d actually enjoy using.</p>
+<p>5:24 PM: Note detail page. 5:33 PM: Soft deletes—because accidents happen. 5:36 PM: Trash view with restore and purge. 6:26 PM: Pinning. Each commit was small, but the cumulative effect was a notes app that felt alive.</p>
+<p>Then 5:51 PM: <strong>Voice notes.</strong> A record button that captures audio on mobile, pipes it through ElevenLabs Scribe for transcription, and structures it into markdown. By 6:04 PM I&rsquo;d tuned it to use the best models and keep the output faithful—no over-enthusiastic rewrites, just clean structured text.</p>
+<p>Autosave landed at 6:23 PM, followed by undo-delete snackbars. By evening, Smart Notes wasn&rsquo;t a toy. It was the notes app I&rsquo;d been looking for.</p>
 <hr>
-<h2 id="day-2-gym-tracker-finds-its-flow">Day 2: Gym Tracker Finds Its Flow</h2>
-<p>Feb 16, 11:25 PM. I turned to Gym Tracker with fresh eyes. The initial &ldquo;log a workout&rdquo; flow was clunky. I reimagined it as a <strong>guided session logger</strong>: you pick a day category (Push, Pull, Legs, etc.), then log sets one by one with voice-to-fill support.</p>
-<p>Voice-to-fill is one of those features that sounds gimmicky until you try it. At 10:19 AM on Feb 17, I added it: tap the mic, say &ldquo;bench press 185 for 8 reps, set 3,&rdquo; and it extracts the fields automatically. No form tapping. It just works.</p>
-<p>Then came the analytics (Feb 17, 12:12 AM). Heatmaps showing workout consistency. Weekly stacked bars. Line charts tracking exercise progression over time. I found myself opening the app just to look at my data.</p>
-<p>The UI got the same treatment as Smart Notes—mobile-first, sticky navigation, app-like feel. By noon on Feb 17, Gym Tracker felt like a native app running in my browser.</p>
+<h2 id="gym-tracker-finds-its-flow">Gym Tracker Finds Its Flow</h2>
+<p>February 16th, 11:25 PM. The initial workout logging flow was clunky. I reimagined it as a guided session logger: pick a day category (Push, Pull, Legs), then log sets one by one.</p>
+<p>Voice-to-fill came the next morning. Tap the mic, say &ldquo;bench press 185 for 8 reps, set 3,&rdquo; and it extracts the fields automatically. No form tapping. It just works.</p>
+<p>Then analytics. Heatmaps showing consistency. Weekly stacked bars. Line charts tracking progression. I found myself opening the app just to look at my data.</p>
+<p>By noon on February 17th, Gym Tracker felt like a native app running in my browser.</p>
 <hr>
-<h2 id="the-paper-notebook-detour-feb-17-121-pm">The Paper Notebook Detour (Feb 17, 1:21 PM)</h2>
-<p>Sometimes you chase an idea that doesn&rsquo;t pan out. I got obsessed with making Smart Notes look like a physical paper notebook—textures, handwritten fonts, ruled lines. I committed the changes: textures, Patrick Hand font, full analog redesign.</p>
-<p>Then I used it for 10 minutes and hated it. Legibility suffered. The novelty wore off fast. At 1:49 PM, I reverted all seven commits. The app went back to clean, readable, digital-native UI. No regrets—you don&rsquo;t know until you try.</p>
+<h2 id="the-paper-notebook-detour">The Paper Notebook Detour</h2>
+<p>February 17th, 1:21 PM. I got obsessed with making Smart Notes look like a physical paper notebook—textures, handwritten fonts, ruled lines. I committed the changes. Then I used it for 10 minutes and hated it. Legibility suffered. At 1:49 PM I reverted all seven commits. No regrets—you don&rsquo;t know until you try.</p>
 <hr>
-<h2 id="day-3-tags-mobile-polish-and-the-scrum-board-feb-18">Day 3: Tags, Mobile Polish, and the Scrum Board (Feb 18)</h2>
-<p>Feb 18 started with practical improvements. Tags for Smart Notes (12:43 AM)—with automatic GPS and timestamp tagging. A floating action button for mobile (12:46 AM). Pinch-zoom disabled so it feels like an app, not a website (1:08 AM).</p>
-<p>Then I stripped the UI down: removed the home nav, the brand headers, the taglines. Clean surfaces. Focus on content.</p>
-<p>The afternoon brought something bigger: <strong>Scrum Board</strong>. I needed a way to track tasks across all these apps. By 1:44 PM, I had per-app boards with priorities. Assignees by 1:45 PM. Due dates by 2:02 PM. Manual ordering by 2:06 PM. Modal task editors by 12:49 PM.</p>
-<p>But I didn&rsquo;t want to <em>manually</em> move cards. I wanted an autopilot.</p>
+<h2 id="mobile-polish-and-the-scrum-board">Mobile Polish and the Scrum Board</h2>
+<p>February 18th started practical. Tags with automatic GPS and timestamping. A floating action button for mobile. Pinch-zoom disabled so it feels like an app, not a website.</p>
+<p>Then I stripped the UI down. Removed home nav, brand headers, taglines. Clean surfaces. Focus on content.</p>
+<p>The afternoon brought something bigger: <strong>Scrum Board</strong>. By 1:44 PM I had per-app boards with priorities. Assignees by 1:45 PM. Due dates by 2:02 PM. Manual ordering by 2:06 PM.</p>
+<p>But I didn&rsquo;t want to manually move cards. I wanted an autopilot.</p>
 <hr>
-<h2 id="day-4-the-autopilot-awakens-feb-18-20">Day 4: The Autopilot Awakens (Feb 18-20)</h2>
-<p>Feb 18, 3:27 PM. I wrote the AUTOPILOT runbook—a cron-driven system where an AI agent picks up tasks, implements them, and reports back. By 3:47 PM, the Scrum Board was upgraded with autopilot states: <code>pending</code> → <code>in_progress</code> → <code>awaiting_review</code> → <code>done</code>.</p>
-<p>The integration was surprisingly clean. The Scrum Board got an &ldquo;Agent Trigger&rdquo; button (7:43 PM). Cron jobs handled scheduling. Each autopilot run:</p>
-<ol>
-<li>Picks a todo task</li>
-<li>Spawns an isolated session</li>
-<li>Implements the feature</li>
-<li>Commits with <code>autopilot(&lt;app&gt;): &lt;description&gt;</code></li>
-<li>Reports back to the task</li>
-</ol>
-<p>By Feb 19, the autopilot was handling real work: upgrading Smart Notes with a Tiptap editor, fixing mobile modals, adding app images to the home page. Each commit in the log after Feb 19 7:20 PM is autopilot work—tagged, traced, reviewable.</p>
-<p>The system even blocked itself when I forgot to add acceptance criteria (Feb 20, 12:22 AM). Good guardrails.</p>
+<h2 id="the-autopilot-awakens">The Autopilot Awakens</h2>
+<p>February 18th, 3:27 PM. I wrote the AUTOPILOT runbook—a cron-driven system where an AI agent picks up tasks, implements them, and reports back. By 3:47 PM the Scrum Board had autopilot states: <code>pending</code> → <code>in_progress</code> → <code>awaiting_review</code> → <code>done</code>.</p>
+<p>The integration was clean. The Scrum Board got an &ldquo;Agent Trigger&rdquo; button. Cron jobs handled scheduling. Each run: pick a task, spawn a session, implement, commit with <code>autopilot(&lt;app&gt;): &lt;description&gt;</code>, report back.</p>
+<p>By February 19th the autopilot was handling real work: upgrading Smart Notes with Tiptap, fixing mobile modals, adding app images. Each commit after 7:20 PM that day is autopilot work—tagged, traced, reviewable.</p>
+<p>The system even blocked itself when I forgot to add acceptance criteria. Good guardrails.</p>
+<hr>
+<h2 id="mission-control-and-the-ios-app">Mission Control and the iOS App</h2>
+<p>Around this time I came across Bhanu Teja&rsquo;s <a href="https://bhanuteja.dev/mission-control">Mission Control</a> article. It articulated exactly the nascent idea in my head: using AI agents for development workflows. That pushed me further.</p>
+<p>But I still hated opening my project in a browser. So I asked Claude Code to build me an iOS app that acts as a browser confined only to my URL. It strips away all the browser functionality I don&rsquo;t need. Just my superapp, fullscreen, like a native experience.</p>
+<p>That&rsquo;s where I am now: an iOS app connecting to my local Citadel instance. Only I can access it. My data stays safe. I&rsquo;ve rebuilt apps I was paying for. Simple CRUD tools with LLM integrations for now, but the foundation is there for more.</p>
 <hr>
 <h2 id="what-i-built">What I Built</h2>
-<p>Four days. 80+ commits. Three working apps and a meta-layer that manages them:</p>
+<p>Four days. 80+ commits. Three working apps and a meta-layer:</p>
 <ul>
-<li><strong>Smart Notes</strong> — Voice-to-markdown notes with tags, search, trash, and a proper rich editor</li>
-<li><strong>Gym Tracker</strong> — Session-based workout logging with voice input and analytics dashboards</li>
-<li><strong>Scrum Board</strong> — Kanban boards with autopilot integration for AI-driven development</li>
-<li><strong>Citadel (host)</strong> — Permission system, per-app SQLite isolation, audit logging, app registry</li>
+<li><strong>Smart Notes</strong> — Voice-to-markdown with tags, search, trash, rich editor</li>
+<li><strong>Gym Tracker</strong> — Session-based logging with voice input and analytics</li>
+<li><strong>Scrum Board</strong> — Kanban with autopilot integration</li>
+<li><strong>Citadel (host)</strong> — Permissions, per-app SQLite isolation, audit logging, app registry</li>
 </ul>
-<p>The architecture held up. Per-app databases mean I can nuke Gym Tracker without touching my notes. The deny-by-default permission model means apps can&rsquo;t wander. The autopilot means I can spec a feature and come back to a pull request.</p>
+<p>The architecture held. Per-app databases mean I can nuke Gym Tracker without touching my notes. Deny-by-default permissions mean apps can&rsquo;t wander. The autopilot means I can spec a feature and come back to a pull request.</p>
 <hr>
 <h2 id="the-vision">The Vision</h2>
 <p>Here&rsquo;s what I&rsquo;m actually building toward: <strong>a world where you have the apps you want, the way you want them.</strong></p>
 <p>No more 20 subscriptions for simple tools that should be free. No more accepting whatever UI some product manager decided was best for &ldquo;engagement.&rdquo; When you control the app, you control the experience.</p>
-<p>And here&rsquo;s the part that excites me most: <strong>interconnection</strong>. When all your apps live in the same place—same data layer, same auth, same runtime—they can talk to each other in ways that SaaS never allows. Your gym tracker can suggest notes about form. Your finance app can reference reading highlights. Everything becomes composable.</p>
+<p>And here&rsquo;s what excites me most: <strong>interconnection</strong>. When all your apps live in the same place—same data layer, same auth, same runtime—they can talk to each other in ways that SaaS never allows. Your gym tracker suggests notes about form. Your finance app references reading highlights. Everything becomes composable.</p>
 <p>Citadel isn&rsquo;t just a personal app host. It&rsquo;s an argument that software should serve users, not shareholders.</p>
 <hr>
-<h2 id="what-id-do-differently">What I&rsquo;d Do Differently</h2>
-<p>The paper notebook detour taught me to test UI changes faster. I should&rsquo;ve prototyped in the browser before committing seven reverts.</p>
-<p>The autopilot needed clearer acceptance criteria from the start. It&rsquo;s good that it blocks on vague tasks, but I should&rsquo;ve documented the format earlier.</p>
-<hr>
-<h2 id="the-stack">The Stack</h2>
-<ul>
-<li><strong>Runtime</strong>: Next.js 15, React, TypeScript</li>
-<li><strong>Database</strong>: SQLite (one per app), accessed via <code>node:sqlite</code></li>
-<li><strong>Styling</strong>: Tailwind CSS v3</li>
-<li><strong>AI</strong>: ElevenLabs Scribe (STT), various LLMs for structuring and autopilot</li>
-<li><strong>Orchestration</strong>: OpenClaw cron jobs for autopilot scheduling</li>
-</ul>
-<hr>
 <h2 id="whats-next">What&rsquo;s Next</h2>
-<p>The autopilot is still learning. I&rsquo;m refining the prompt engineering, adding more guardrails, and building out the review flow. The next apps are already specced: a finance tracker, a reading list, maybe a personal CRM.</p>
-<p>But there&rsquo;s more coming:</p>
 <ul>
-<li>
-<p><strong>Dockerize each app</strong> — Right now everything runs in the same Next.js process. I want true isolation: each app in its own container, still managed by the Citadel host.</p>
-</li>
-<li>
-<p><strong>Cron the agents to pick tasks from the scrum board</strong> — The autopilot is mostly manual right now. I want agents running on a schedule, pulling tasks, implementing them, and reporting back. Currently blocked by credit limits and API expenses, but that&rsquo;s temporary.</p>
-</li>
+<li><strong>Dockerize each app</strong> — True isolation: each app in its own container, still managed by Citadel</li>
+<li><strong>Cron the agents</strong> — Agents running on schedule, pulling tasks from the scrum board, implementing, reporting back. Currently blocked by API credit limits, but that&rsquo;s temporary</li>
 </ul>
-<p>Citadel started as a way to avoid spinning up new VPS instances. It became something more interesting: a platform where I can <em>think</em> in apps, build them quickly, and let an agent handle the grunt work.</p>
+<p>More apps coming: finance tracker, reading list, maybe a personal CRM.</p>
+<p>Citadel started as a way to avoid spinning up VPS instances. It became something more interesting: a platform where I can <em>think</em> in apps, build them quickly, and let an agent handle the grunt work.</p>
 <p>That&rsquo;s the story so far. The commits tell the rest.</p>
 <hr>
 <p><em>Last updated: Feb 20, 2026. Commit <code>70e4b15</code>.</em></p>
